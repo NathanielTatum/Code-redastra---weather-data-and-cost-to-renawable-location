@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aneious</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class = "topSection">
+        <div style="font: size 2rem;font-weight:bold;">Aneious</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="chat.html">chat</a>
+            <a href="visualization.html">Visualization</a>
+            <a href="methodology.html">Methodology</a>
+            <a href="about.html">About Us</a>
+        </nav>
+    </header>
+    <section class="hero" id="home">
+        <h1>About the team and the mission</h1>
+        <div style="margin:2rem auto;max-width:600px;">
+            <img src="background.png" alt="Renewable Energy" style="width:100%;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+    </section>
+    <section class="flatGrey" id="team">
+        <h2>Team Members</h2>
+        <ul>
+            <li>Swaroop Vedula – Project Lead & Data Scientist</li>
+            <li>Anjali Martinez– AI/ML Engineer</li>
+            <li>Jeet_ – AI/ML Engineer, Geospatial Analyst</li>
+            <li>Nathaniel Tatum– Web Developer</li>
+        </ul>
+    </section>
+    <section class="flatGrey" id="motivation" >
+        <h2>Motivation & Problem Statement</h2>
+        <p>Optimizing renewable energy placement is crucial for maximizing energy output, reducing costs, and minimizing environmental impact. Our AI-driven approach helps identify the best locations for solar and wind projects by analyzing weather, geography, and economics.</p>
+    </section>
+    <section class="flatGrey" id="how-it-works" >
+        <h2>How It Works</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/4144/4144336.png" alt="Infographic: Data to AI to Best Locations" style="width:100%;max-width:400px;display:block;margin:2rem auto;">
+        <p style="text-align:center;">We take the weather data from large national databases and then compare that to known statitistics on solar and wind energy production which we then use to find locally optimal positioning for maximum benefit and minimizing costs using our sophisticated AI known as Aneious</p>
+    </section>
+    <section class="flatGrey" id="summary" >
+        <h2>Project Summary</h2>
+        <ul>
+            <li>Analyze large-scale weather & spatial data</li>
+            <li>Predict solar & wind energy yield</li>
+            <li>Optimize for weather, cost, and location</li>
+            <li>Simulate scenarios for maximizing ROI or minimizing impact</li>
+        </ul>
+        <h3>Data Sources</h3>
+        <ul>
+            <li><a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily" target="_blank">GHCN‑Daily</a>: Daily temperature, precipitation, snowfall, etc.</li>
+            <li><a href="https://www.ncei.noaa.gov/products/land-based-station/integrated-surface-database" target="_blank">ISD</a>: Hourly and synoptic global weather observations</li>
+            <li><a href="https://registry.opendata.aws/noaa-ghcn/" target="_blank">GHCN on AWS</a></li>
+            <li><a href="https://registry.opendata.aws/noaa-isd/" target="_blank">ISD on AWS</a></li>
+        </ul>
+        <h3>AI Techniques</h3>
+        <ul>
+            <li>Regression Models: Predict energy output</li>
+            <li>Clustering: Group high-potential zones</li>
+            <li>Neural Networks: Model complex relationships</li>
+            <li>Time Series Forecasting: Predict future energy availability</li>
+            <li>Geospatial Analysis + AI: Combine spatial data with ML</li>
+        </ul>
+        <h3>Key Data Types</h3>
+        <ul>
+            <li>Weather data (wind speed, solar irradiance,cloud coverage)</li>
+            <li>Geographic data (lat, long, elevation)</li>
+            <li>Land cost data</li>
+            <li>Grid infrastructure locations</li>
+            <li>Zoning/environmental data</li>
+        </ul>
+        <h3>Next Steps</h3>
+        <ol>
+            <li>Choose a region to focus on</li>
+            <li>Gather datasets</li>
+            <li>Build a model to predict energy yield per location</li>
+            <li>Incorporate costs for optimization</li>
+            <li>Use AI to rank locations</li>
+            <li>Visualize results on a map</li>
+        </ol>
+    </section>
+    <footer>
+        &copy; Aneious
+    </footer>
+</body>
+</html>

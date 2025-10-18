@@ -1,10 +1,142 @@
-body { font-family: 'Roboto', sans-serif; margin: 0; background: #f5f7fa; color: #222; }
-header { background: #222; color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-nav a { color: #fff; text-decoration: none; margin: 0 1rem; font-weight: 500; }
-nav a:hover { text-decoration: underline; }
-.hero { padding: 4rem 2rem; text-align: center; background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); color: #fff; }
-.hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-.hero p { font-size: 1.25rem; margin-bottom: 2rem; }
-.cta-btn { background: #fff; color: #2575fc; padding: 0.75rem 2rem; border: none; border-radius: 2rem; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
-.cta-btn:hover { background: #e3e3e3; }
-footer { text-align: center; padding: 2rem; background: #222; color: #fff; margin-top: 3rem; }
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background: #333333;
+    color: #222;
+}
+
+header {
+    background: #222;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    background: #000
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(0deg, #333333 0%, #000000 100%);
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.cta-btn {
+    background: #fff;
+    color: #2575fc;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cta-btn:hover {
+    background: #e3e3e3;
+}
+
+/*chat sections css, chat is class while rest are id*/
+.chat {
+    gap: 20px; /* Sets a gap of 20px between grid items */
+    padding: 20px;
+    border: 2px solid #333;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Three columns, middle one is twice as wide */
+    grid-template-rows: repeat(7, 1fr) /* Two rows, second one is 100px tall */
+}
+#chatTitle{
+    /* on margin */
+    color: #e3dddd;
+    grid-column: 1/5; 
+    grid-row: 1; /* Occupies row 1 */
+}
+#chatBox{
+    /* above input to margin */
+    color: #e3dddd;
+    grid-column: 1 /5; 
+    grid-row: 2/5; /* Occupies row 2 */
+}
+#chatInput{
+    /* bottum but above margin */
+    color: #e3dddd;
+    grid-column: 1 / 5; /* Spans from column line 1 to 3 */
+    grid-row: 6; /* Occupies row 2 */
+}
+#carbonbox{
+    /* bottum right*/
+    grid-column: 6;
+    grid-row: 6/7; /* 67*/
+}
+
+/*used commonly for background on basic tiles*/
+.flatGrey {
+    background: linear-gradient(0deg, #333333 0%,#000000,50%, #333333 100%);
+    padding: 0%;
+    color: #e3dddd
+    /*
+    style:"max-width:800px";
+    margin:2rem auto;
+    padding:2rem;*
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);*/
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #222;
+    color: #fff;
+    margin-top: 3rem;
+}
+/* Styling unvisited links */
+a:link {
+  color: #9dbbe2; /* light blue */
+}
+
+/* Styling visited links */
+a:visited {
+  color: #ac57e9; /* hot light pink */
+}
+
+/* Styling links on hover */
+a:hover {
+  color: #c089de; /* light pink */
+}
+
+/* Styling active links */
+a:active {
+  color: #8b96cd; /* light blue grey */
+}
+
+/* Styling focused links (e.g., for keyboard navigation) */
+a:focus {
+  color: #8b96cd /* light blue */
+}
+
+.topSection{
+    background: #000000;
+    position: sticky; 
+    top: 0
+}
