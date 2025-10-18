@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Regions | Aneious</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <div style="font-size:1.5rem;font-weight:bold;">Aneious</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="visualization.html">Visualization</a>
+            <a href="methodology.html">Methodology</a>
+            <a href="explore.html">Explore Regions</a>
+        </nav>
+    </header>
+    <section class="hero" style="background:#222;color:#fff;">
+        <h1>Explore Regions</h1>
+        <p>Compare locations and see predicted energy output, cost, and rankings.</p>
+    </section>
+    <main style="max-width:1000px;margin:2rem auto;background:#fff;padding:2rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <label for="region-select"><strong>Select Region:</strong></label>
+        <select id="region-select" style="margin:0 1rem 1rem 1rem;">
+            <option value="region1">Region 1</option>
+            <option value="region2">Region 2</option>
+            <option value="region3">Region 3</option>
+        </select>
+        <table style="width:100%;margin-top:1rem;border-collapse:collapse;">
+            <thead>
+                <tr style="background:#f5f7fa;">
+                    <th>Location</th>
+                    <th>Predicted Energy Output</th>
+                    <th>Cost Index</th>
+                    <th>Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Site A</td>
+                    <td>120</td>
+                    <td>0.8</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Site B</td>
+                    <td>90</td>
+                    <td>0.6</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Site C</td>
+                    <td>75</td>
+                    <td>0.5</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="region-map" style="height:300px;margin-top:2rem;border-radius:1rem;"></div>
+    </main>
+    <footer>
+        &copy; Aneious
+    </footer>
+    <script>
+        // Placeholder for Leaflet region map
+        var regionMap = L.map('region-map').setView([20, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(regionMap);
+    </script>
+</body>
+</html>

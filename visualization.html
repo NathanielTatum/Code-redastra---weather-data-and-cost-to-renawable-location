@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization | Aneious</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div style="font-size:1.5rem;font-weight:bold;">Aneious</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="visualization.html">Visualization</a>
+            <a href="methodology.html">Methodology</a>
+            <a href="explore.html">Explore Regions</a>
+        </nav>
+    </header>
+    <section class="hero" style="background:#2575fc;color:#fff;">
+        <h1>Interactive Data Visualization</h1>
+        <p>Explore optimal locations for renewable energy projects using interactive maps and charts.</p>
+    </section>
+    <main style="max-width:1200px;margin:2rem auto;display:flex;gap:2rem;">
+        <div style="flex:2;">
+            <div id="map" style="height:400px;border-radius:1rem;"></div>
+            <div style="margin-top:2rem;">
+                <canvas id="chart" height="200"></canvas>
+            </div>
+        </div>
+        <aside style="flex:1;background:#fff;padding:1rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            <h2>Region Statistics</h2>
+            <ul>
+                <li>Avg Wind Speed: <span id="wind-speed">--</span></li>
+                <li>Avg Solar Irradiance: <span id="solar-irradiance">--</span></li>
+                <li>Avg Land Cost: <span id="land-cost">--</span></li>
+                <li>Predicted Energy Output: <span id="energy-output">--</span></li>
+                <li>Estimated ROI: <span id="roi">--</span></li>
+            </ul>
+            <div style="margin-top:1rem;">
+                <label><input type="checkbox" checked> Solar Potential</label><br>
+                <label><input type="checkbox" checked> Wind Speed</label><br>
+                <label><input type="checkbox"> Land Cost</label><br>
+                <label><input type="checkbox"> Terrain/Elevation</label>
+            </div>
+        </aside>
+    </main>
+    <footer>
+        &copy; Aneious
+    </footer>
+    <script>
+        // Placeholder for Leaflet map
+        var map = L.map('map').setView([20, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        // Placeholder for Chart.js
+        var ctx = document.getElementById('chart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Location 1', 'Location 2', 'Location 3'],
+                datasets: [{
+                    label: 'Predicted Energy Output',
+                    data: [120, 90, 150],
+                    backgroundColor: '#2575fc'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
