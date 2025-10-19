@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Visualization | Aneious</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.css" />
+    <!-- Google Maps 3D (MapsJS beta) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJPTwj4S8isr4b-3NtqVSxk450IAS1lOQ&v=beta&libraries=maps3d" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="visualization.js"></script>
+    <script src="visualization.js" defer></script>
 </head>
 <body>
     <header class = "topSection">
@@ -27,7 +27,9 @@
     </section>
     <main style="max-width:1200px;margin:2rem auto;display:flex;gap:2rem;">
         <div style="flex:2;">
-            <div id="map" style="height:400px;border-radius:1rem;"></div>
+            <!-- Google Maps 3D component from renewable-site-scout-2 -->
+            <gmp-map-3d id="map" center="0,0,100" range="20000000" tilt="0" heading="0" mode="hybrid" default-ui-hidden="true" style="display:block;height:400px;border-radius:1rem;overflow:hidden;">
+            </gmp-map-3d>
             <div style="margin-top:2rem;">
                 <canvas id="chart" height="200"></canvas>
             </div>
@@ -69,24 +71,9 @@
         </aside>
     </main>
     <script>
-        // Placeholder for Leaflet map
-        var map = L.map('map').setView([20, 0], 2);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-        // Placeholder for Chart.js
-        /*var ctx = document.getElementById('chart').getContext('2d');
-        var chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Houston', 'Austin', 'Dallas'],
-                datasets: [{
-                    label: 'Predicted Energy Output',
-                    data: [120, 90, 150],
-                    backgroundColor: '#2575fc'
-                }]
-            }
-        });*/
+        // If the Google Maps 3D component is available we leave it to render itself.
+        // The <gmp-map-3d> element is loaded via the MapsJS beta library included in the head.
+        // Chart placeholder (left commented) — your existing chart code in visualization.js will hook into the canvas.
     </script>
     <footer style = "text-align: right">
         Cache me outside: Project Aneious
