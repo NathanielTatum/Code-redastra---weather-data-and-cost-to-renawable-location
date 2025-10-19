@@ -33,8 +33,10 @@ async function plotAllNASAData(viewer, lon, lat, monthsBack) {
 
   try {
     const res = await fetch(url);
-    const data = await res.json();
-    const p = data.properties.parameter;
+  const data = await res.json();
+  const p = data.properties.parameter;
+  // Keep a copy of the full parameter object globally so other functions can access it
+  nasaData = p;
 
     // Clear any previous entities
     allEntities.forEach(e => viewer.entities.remove(e));
@@ -112,4 +114,49 @@ playDays("T2M",1000)
   } catch (err) {
     console.error('Error fetching or plotting:', err);
   }
+}
+// Auto-initialize: wait for a global Cesium viewer (window.viewer) and plot default data
+(function waitForViewerAndPlot() {
+  const lon = -95.7129; // continental US center
+  const lat = 37.0902;
+  const monthsBack = 3;
+  let attempts = 0;
+  const maxAttempts = 20; // ~10 seconds (20 * 500ms)
+  const handle = setInterval(() => {
+    attempts += 1;
+    if (typeof plotAllNASAData === 'function' && window.viewer) {
+      clearInterval(handle);
+      try {
+        plotAllNASAData(window.viewer, lon, lat, monthsBack);
+      } catch (e) {
+        console.error('Automatic plotting failed:', e);
+      }
+    } else if (attempts >= maxAttempts) {
+      clearInterval(handle);
+      console.warn('cesiumTest.js: viewer not found; automatic plotting aborted.');
+    }
+  }, 500);
+})();
+
+// Ensure a global Cesium viewer exists so this script can run standalone.
+// This will only create a viewer if Cesium is loaded, a container with id 'cesiumContainer' exists,
+// and window.viewer is not already set.
+try {
+  if (typeof window !== 'undefined' && !window.viewer && typeof Cesium !== 'undefined' && document.getElementById && document.getElementById('cesiumContainer')) {
+    window.viewer = new Cesium.Viewer('cesiumContainer', {
+      baseLayerPicker: false,
+      geocoder: false,
+      timeline: false,
+      animation: false,
+      sceneModePicker: false,
+      navigationHelpButton: false,
+      infoBox: false,
+      selectionIndicator: false,
+      zoomControl: true
+    });
+    console.info('cesiumTest.js: created window.viewer automatically');
+  }
+} catch (e) {
+  // Non-fatal: if Cesium isn't available yet, the auto-initializer at the bottom will wait for window.viewer.
+  console.warn('cesiumTest.js: auto-create viewer failed (will retry):', e);
 }
