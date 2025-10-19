@@ -1,327 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Cesium CSS (unpkg CDN) -->
-  <link href="https://unpkg.com/cesium@1.113.0/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Earth Heatmap</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Leaflet.heat plugin -->
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
 
   <style>
-    /* Fill the page and ensure the map container has height */
     html, body {
-      height: 100%;
       margin: 0;
-      padding: 0;
-      font-family: 'inter', sans-serif;
-    }
-    
-    body {
-      font-family: 'inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: grid; /* Use CSS Grid for the body */
-            grid-template-columns: 1fr ; /* 300px for sidebar, rest for Cesium */
-            height: 1/2vh 50vh ;
-    }
-    #header{
-      font-family: 'inter', sans-serif;
-      background: #000000;
-      position: sticky; 
-      top: 0;
-      font-family: 'inter', sans-serif;
-      grid-column: 1 / -1; /* Span across all columns */
-      grid-row:1;
-    }
-    #sideBar{
-        
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 10px;
-      border: 1px solid #888;
-      border-radius: 5px;
-      font-size: 14px;
-      z-index: 100;
-      font-family: 'inter', sans-serif;
-    }
-    #cesiumContainer {
+      height: 100%;
       width: 100%;
-      height: calc(100vh - 64px); /* leave space for header/footer if needed */
-      display: block;
+      font-family: Arial, sans-serif;
     }
-    header {
-    background: #222;
-    color: #fff;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-      font-family: 'inter', sans-serif;
+
+    #map {
+      height: 100vh;
+      width: 100%;
     }
-nav a {
-      font-family: 'inter', sans-serif;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5em 1em;
-    margin: 0 0.3em;
-    border-radius: 1.5em;
-    background: #222;
-    border: 2px solid #183971;
-    box-shadow: 0 2px 8px rgba(38, 117, 252, 0.08);
-    font-size: 1.4vw;
-    display: inline-block;
-    max-width: 10vw;
-    max-height: 3vh;
-}
 
-nav a:hover, nav a:focus {
-    background: #2575fc;
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(38, 117, 252, 0.18);
-    text-decoration: none;
-}
+    #inputPanel {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
 
-nav a:active {
-    background: #222;
-    color: #fff;
-}
+    label {
+      font-size: 14px;
+      margin-right: 5px;
+    }
 
-nav a:hover {
-    text-decoration: underline;
-}
-/* Styling unvisited links */
-a:link {
-  color: #9dbbe2; /* light blue */
-}
+    input {
+      width: 80px;
+      margin-bottom: 6px;
+    }
 
-/* Styling visited links */
+    button {
+      margin-top: 5px;
+      padding: 6px 10px;
+      border: none;
+      background-color: #3a86ff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-
-/* Styling links on hover */
-a:hover {
-  color: #c089de; /* light pink */
-}
-
-/* Styling active links */
-a:active {
-  color: #8b96cd; /* light blue grey */
-}
-
-/* Styling focused links (e.g., for keyboard navigation) */
-a:focus {
-  color: #8b96cd /* light blue */
-}
-
+    button:hover {
+      background-color: #265df2;
+    }
   </style>
 </head>
+
 <body>
-  <header id = "header">
-        <div style="font-size:2rem;font-weight:bold;">Aneious</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="chat.html">Chat</a>
-            <a href="visualization.html">Visualization</a>
-            <a href="methodology.html">Methodology</a>
-            <a href="aboutus.html">About Us</a>
-        </nav>
-  </header>
+  <div id="inputPanel">
+    <h3>🌎 Add Heatmap Point</h3>
+    <label>Latitude:</label><input type="number" id="lat" step="0.0001" placeholder="e.g. 40.7128"><br>
+    <label>Longitude:</label><input type="number" id="lon" step="0.0001" placeholder="-74.0060"><br>
+    <label>Intensity:</label><input type="number" id="intensity" step="0.1" min="0" max="1" placeholder="0.5"><br>
+    <button id="addPoint">Add Point</button>
+    <button id="clearPoints" style="background-color:#e63946;">Clear All</button>
+  </div>
 
-  <!-- Cesium container -->
-  <div id="cesiumContainer">
-
-  <!-- CesiumJS (unpkg CDN) -->
-  <script src="https://unpkg.com/cesium@1.113.0/Build/Cesium/Cesium.js"></script>
+  <div id="map"></div>
 
   <script>
-    // Optional: If you use Cesium Ion assets, set your token here:
-    Cesium.Ion.defaultAccessToken = 'AIzaSyAko5Z3eEdvJ7RnXLrjvDE6KA0Bn7KUoyc';
+    // Initialize the map
+    const map = L.map('map').setView([20, 0], 2);
 
-    // Create the viewer
-    const viewer = new Cesium.Viewer('cesiumContainer', {
-      // Use a simple base layer provider that doesn't require Ion:
-      baseLayerPicker: false,
-      geocoder: false,
-      timeline: false,
-      animation: false,
-      sceneModePicker: false,
-      navigationHelpButton: false,
-      infoBox: false,
-      selectionIndicator: false,
-      zoomControl: true
-    });
-    
-    
-
-    // Replace the default imagery with OpenStreetMap (optional)
-    const osmProvider = new Cesium.OpenStreetMapImageryProvider({
-      url: 'https://a.tile.openstreetmap.org/'
-    });
-    viewer.imageryLayers.removeAll();
-    viewer.imageryLayers.addImageryProvider(osmProvider);
-
-    // create with zoom control (default true)
-    var leafletMap = L.map('map', {
-      zoomControl: true,         // ensure present
-      attributionControl: false, // optional removal
-    }).setView([20, 0], 2);
-
-    // optionally move zoom control to bottom-right
-    leafletMap.zoomControl.setPosition('bottomright');
-
-    // Add OpenStreetMap tiles as usual
+    // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(leafletMap);
-    L.control.zoom({ position: 'bottomright' }).addTo(leafletMap);
+    }).addTo(map);
 
-    // Set an initial camera view (lat, lon, height)
-    viewer.camera.setView({
-      destination: Cesium.Cartesian3.fromDegrees(-95.7129, 37.0902, 2500000) // continental US view
-    });
+    // Initialize heat layer with some sample points
+    let heatData = [
+      [37.7749, -122.4194, 0.5], // San Francisco
+      [40.7128, -74.0060, 0.8],  // New York
+      [51.5074, -0.1278, 0.9],   // London
+    ];
 
-    position.addEventListener("click", zoomToLocation);
-    function zoomToLocation(height = 5000){
-      const lon = document.getElementsByName('Longitude')[0].value;
-      const lat = document.getElementsByName('Latitude')[0].value;
+    const heatLayer = L.heatLayer(heatData, {
+      radius: 25,
+      blur: 15,
+      maxZoom: 10,
+    }).addTo(map);
 
-      viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(Number(lon), Number(lat), Number(height)),
-        /*orientation:{
-          heading: Cesium.Math.toRadians(Number(headingDegrees) || 0),
-          pitch: Cesium.Math.toRadians(Number(pitchDegrees) || -45),
-          roll: 0
-        },*/
-        duration: 0 // seconds (optional)
-      });
-    }
-    // Add a click handler to show coordinates and optionally create a marker
-    const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
-    handler.setInputAction(function (click) {
-      const pickedPosition = viewer.scene.pickPosition(click.position);
-      if (!pickedPosition) {
-        // In 2D/Columbus view or if pickPosition fails, fallback to globe pick
-        const lon = Cesium.Math.toDegrees(cartographic.longitude).toFixed(6);
-        const lat = Cesium.Math.toDegrees(cartographic.latitude).toFixed(6);
-        console.log('Clicked coordinates:', lat, lon);
-        displayMarker(cartesian);
-        updateInputs(lat, lon);
+    // Add new points from user input
+    document.getElementById('addPoint').addEventListener('click', () => {
+      const lat = parseFloat(document.getElementById('lat').value);
+      const lon = parseFloat(document.getElementById('lon').value);
+      const intensity = parseFloat(document.getElementById('intensity').value) || 0.5;
+
+      if (isNaN(lat) || isNaN(lon) || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+        alert('Please enter valid coordinates.');
         return;
       }
-      const cartographic = Cesium.Cartographic.fromCartesian(pickedPosition);
-      const lon = Cesium.Math.toDegrees(cartographic.longitude).toFixed(6);
-      const lat = Cesium.Math.toDegrees(cartographic.latitude).toFixed(6);
-      console.log('Clicked coordinates:', lat, lon);
-      displayMarker(pickedPosition);
-      updateInputs(lat, lon);
-    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
-    // Helper: display a simple marker (billboard) at the picked position
-    let lastEntity = null;
-    function displayMarker(cartesianPosition) {
-      // Remove previous marker
-      if (lastEntity) {
-        viewer.entities.remove(lastEntity);
-        lastEntity = null;
-      }
-      lastEntity = viewer.entities.add({
-        position: cartesianPosition,
-        billboard: {
-          image: 'https://cdn.jsdelivr.net/gh/mapbox/maki/icons/marker-15.svg',
-          verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-          scale: 1.6
-        }
-      });
-    }
+      heatData.push([lat, lon, intensity]);
+      heatLayer.setLatLngs(heatData);
+      map.setView([lat, lon], 5);
+    });
 
-    // Helper: update Longitude/Latitude inputs in the page if they exist
-    function updateInputs(lat, lon) {
-      const latInput = document.getElementsByName('Latitude')[0];
-      const lonInput = document.getElementsByName('Longitude')[0];
-      if (latInput) latInput.value = lat;
-      if (lonInput) lonInput.value = lon;
-      // If you have a function to refresh visualizations in your app, call it here:
-      if (typeof updateVisualization === 'function') {
-        try { updateVisualization(); } catch(e) { /* ignore errors */ }
-      }
-    }
-
-    // Optional: Add a simple geocoder/pin example
-    // viewer.entities.add({ position: Cesium.Cartesian3.fromDegrees(-0.1276, 51.5074), point: { pixelSize: 10, color: Cesium.Color.ORANGE }});
-  document.getElementById('zoomIn').addEventListener('click', () => {
-  const camera = viewer.camera;
-  camera.zoomIn(); // convenience method; you can also change camera.position
-});
-document.getElementById('zoomOut').addEventListener('click', () => {
-  viewer.camera.zoomOut();
-});
-  
-  
+    // Clear all points
+    document.getElementById('clearPoints').addEventListener('click', () => {
+      heatData = [];
+      heatLayer.setLatLngs([]);
+    });
   </script>
-  <div id = "sideBar">
-        <aside >
-          <div style="color: #2ac2dd;">
-            <h2>Region Statistics</h2>
-            </div><!--
-            <ul>
-                
-                <li>Avg Wind Speed: <span id="wind-speed">--</span></li>
-                <li>Avg Solar Irradiance: <span id="solar-irradiance">--</span></li>
-                <li>Avg Land Cost: <span id="land-cost">--</span></li>
-                <li>Predicted Energy Output: <span id="energy-output">--</span></li>
-                <li>Estimated ROI: <span id="roi">--</span></li>
-            </ul>-->
-            <label>*Longitude: <input type="number" name="Longitude"></label><br>
-            <label>*Latitude: <input type="number" name="Latitude"></label>
-            <br><button id="position" onchange="zoomToLocation()">Show location</button>
-
-
-            <div style="margin-top:1rem;">
-                <form action="/submit-form.php" method="post">
-                <label for="sunOrWind">*Choose an option:</label>
-                    <select id="sunOrWind" name="selectedOption" onchange="updateInputValue()">
-                        <option value="Solar panels">Solar panels</option>
-                        <option value="Wind turbine">Wind turbine</option>
-                    </select>
-                </form><br>
-                <div id = "wind">
-                    <label>max wind speed<input type="number" name="maxWind"></label><br>
-                    <label>preferred wind speed<input type="number" name="preferredWind"></label><br>
-                    <label>min wind speed<input type="number" name="minWind"></label>
-                    <form action="/submit-form.php" method="post">
-                    <label for="display">Display data:</label>
-                        <select id="display" name="selectedOption" onchange="updateInputValue()">
-                            <option value="50mMaxWind">Max wind speed at 50m</option>
-                            <option value="50mAvgWind">Average wind speed at 50m</option>
-                            <option value="50mMinWind">Min wind speed at 50m</option>
-                        </select>
-                    </form><br>
-                </div>
-                <div id = "solar">
-                <label>max temp<input type="number" name="maxSolar"></label><br>
-                <label>preferred temp<input type="number" name="preferredSun"></label><br>
-                <label>min temp<input type="number" name="minSolar"></label>
-                    <form action="/submit-form.php" method="post">
-                    <label for="display">Display data:</label>
-                        <select id="display" name="selectedOption" onchange="updateInputValue()">
-                            <option value="MaxTemp">Max temperature</option>
-                            <option value="AvgTemp">Average temperature</option>
-                            <option value="MinTemp">Min temperature</option>
-                            <option value="AvgLight">Average light in KWH</option>
-                        </select>
-                    </form><br>
-                </div>
-            </div>
-  </div>
-</body>
-<script src="visualization.js"></script>
-
-        </aside>
-    </main>
-</div>
-    <footer style = "text-align: right">
-        Cache me outside: Project Aneious
-    </footer>
 </body>
 </html>
