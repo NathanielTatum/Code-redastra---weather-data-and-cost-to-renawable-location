@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Earth Heatmap</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Leaflet.heat plugin -->
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+
+    #inputPanel {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    label {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+
+    input {
+      width: 80px;
+      margin-bottom: 6px;
+    }
+
+    button {
+      margin-top: 5px;
+      padding: 6px 10px;
+      border: none;
+      background-color: #3a86ff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #265df2;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="inputPanel">
+    <h3>🌎 Add Heatmap Point</h3>
+    <label>Latitude:</label><input type="number" id="lat" step="0.0001" placeholder="e.g. 40.7128"><br>
+    <label>Longitude:</label><input type="number" id="lon" step="0.0001" placeholder="-74.0060"><br>
+    <label>Intensity:</label><input type="number" id="intensity" step="0.1" min="0" max="1" placeholder="0.5"><br>
+    <button id="addPoint">Add Point</button>
+    <button id="clearPoints" style="background-color:#e63946;">Clear All</button>
+  </div>
+
+  <div id="map"></div>
+
+  <script>
+    // Initialize the map
+    const map = L.map('map').setView([20, 0], 2);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Initialize heat layer with some sample points
+    let heatData = [
+      [37.7749, -122.4194, 0.5], // San Francisco
+      [40.7128, -74.0060, 0.8],  // New York
+      [51.5074, -0.1278, 0.9],   // London
+    ];
+
+    const heatLayer = L.heatLayer(heatData, {
+      radius: 25,
+      blur: 15,
+      maxZoom: 10,
+    }).addTo(map);
+
+    // Add new points from user input
+    document.getElementById('addPoint').addEventListener('click', () => {
+      const lat = parseFloat(document.getElementById('lat').value);
+      const lon = parseFloat(document.getElementById('lon').value);
+      const intensity = parseFloat(document.getElementById('intensity').value) || 0.5;
+
+      if (isNaN(lat) || isNaN(lon) || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+        alert('Please enter valid coordinates.');
+        return;
+      }
+
+      heatData.push([lat, lon, intensity]);
+      heatLayer.setLatLngs(heatData);
+      map.setView([lat, lon], 5);
+    });
+
+    // Clear all points
+    document.getElementById('clearPoints').addEventListener('click', () => {
+      heatData = [];
+      heatLayer.setLatLngs([]);
+    });
+  </script>
+</body>
+</html>
