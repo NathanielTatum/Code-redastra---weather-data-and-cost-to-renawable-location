@@ -1,11 +1,12 @@
 body {
-    font-family: 'Roboto', sans-serif;
+      font-family: 'inter', sans-serif;
     margin: 0;
     background: #333333;
     color: #222;
 }
 
 header {
+      font-family: 'inter', sans-serif;
     background: #222;
     color: #fff;
     padding: 1rem 2rem;
@@ -14,6 +15,7 @@ header {
     justify-content: space-between;
 }
 .grid {
+      font-family: 'inter', sans-serif;
             margin-top:var(--gap);
             display:grid;
             grid-template-columns: 1;
@@ -21,6 +23,7 @@ header {
         }
 
         .card {
+      font-family: 'inter', sans-serif;
             background-color: #efdddd;
             margin-bottom: 40px;
             padding:20px;
@@ -30,16 +33,19 @@ header {
             align-items:center
         }
         .card h2{
+      font-family: 'inter', sans-serif;
             margin:0 0 8px 0;
             font-size:1.2rem;
         }
         .card p{
+      font-family: 'inter', sans-serif;
             margin:0;
             color:var(--muted);
             font-size:0.95rem;
             line-height:1.5;
         }
         .card small{
+      font-family: 'inter', sans-serif;
             display:block;
             margin-top:10px;
             color:#7787a2;
@@ -55,8 +61,11 @@ nav a {
     background: #222;
     border: 2px solid #183971;
     box-shadow: 0 2px 8px rgba(38, 117, 252, 0.08);
-    font-size: 1.8vw;
+    font-size: 1.4vw;
     display: inline-block;
+      font-family: 'inter', sans-serif;
+    max-width: 10vw;
+    max-height: 3vh;
 }
 
 nav a:hover, nav a:focus {
@@ -64,13 +73,14 @@ nav a:hover, nav a:focus {
     color: #fff;
     box-shadow: 0 4px 16px rgba(38, 117, 252, 0.18);
     text-decoration: none;
+      font-family: 'inter', sans-serif;
 }
 
 nav a:active {
     background: #222;
     color: #fff;
 }
-
+/*
 @media (max-width: 700px) {
     nav {
         display: flex;
@@ -83,12 +93,13 @@ nav a:active {
         padding: 0.4em 0.8em;
         margin: 0.2em;
     }
-}
+}*/
 nav a:hover {
     text-decoration: underline;
 }
 
 .hero {
+      font-family: 'inter', sans-serif;
     padding: 4rem 2rem;
     text-align: center;
     background: linear-gradient(0deg, #333333 0%, #000000 100%);
@@ -96,16 +107,19 @@ nav a:hover {
 }
 
 .hero h1 {
+      font-family: 'inter', sans-serif;
     font-size: 3rem;
     margin-bottom: 1rem;
 }
 
 .hero p {
+      font-family: 'inter', sans-serif;
     font-size: 1.25rem;
     margin-bottom: 2rem;
 }
 
 .cta-btn {
+      font-family: 'inter', sans-serif;
     background: #fff;
     color: #2575fc;
     padding: 0.75rem 2rem;
@@ -117,11 +131,13 @@ nav a:hover {
 }
 
 .cta-btn:hover {
+      font-family: 'inter', sans-serif;
     background: #e3e3e3;
 }
 
 /*chat sections css, chat is class while rest are id*/
 .chat {
+      font-family: 'inter', sans-serif;
     gap: 20px; /* Sets a gap of 20px between grid items */
     padding: 20px;
     border: 2px solid #333;
@@ -174,6 +190,7 @@ nav a:hover {
 
 /*used commonly for background on basic tiles*/
 .flatGrey {
+      font-family: 'inter', sans-serif;
     background: linear-gradient(0deg, #333333 0%,#1c1c1c,50%, #333333 100%);
     padding: 0%;
     color: #e3dddd;
@@ -192,6 +209,7 @@ nav a:hover {
 }
 
 footer {
+      font-family: 'inter', sans-serif;
     text-align: center;
     padding: 2rem;
     background: #222;
@@ -224,7 +242,9 @@ a:focus {
 }
 
 .topSection{
+      font-family: 'inter', sans-serif;
     background: #000000;
     position: sticky; 
+    max-height:5%;
     top: 0
 }

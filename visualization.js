@@ -97,36 +97,35 @@ document.addEventListener('DOMContentLoaded', function () {
     updateVisualization();
 
     const sendData = () => {
-
         const iframe = document.getElementById('frame');
 
         // Data you want to send
         if(isSolar){
-        const data = {
-            type: 'temps',
-            payload: {
-                longitude: Longitude,
-                latitude: Latitude,
-                maxTemperature: MaxSolar,
-                prefTemperature: PreferredSolar,
-                minTemperature: MinSolar
-            }
-     };
-    iframe.contentWindow.postMessage(data, '*')
-    }else{
-        
-        const data = {
-            type: 'winds',
-            payload: {
-                longitude: Longitude,
-                latitude: Latitude,
-                maxTemperature: MaxWind,
-                prefTemperature: preferredWind,
-                minTemperature: MinWind
-            }
-     };
-    iframe.contentWindow.postMessage(data, '*')
-    }
+            const data = {
+                type: 'temps',
+                payload: {
+                    longitude: Longitude,
+                    latitude: Latitude,
+                    maxTemperature: MaxSolar,
+                    prefTemperature: PreferredSolar,
+                    minTemperature: MinSolar
+                }
+            };
+            iframe.contentWindow.postMessage(data, '*');
+        } else {
+            const data = {
+                type: 'winds',
+                payload: {
+                    longitude: Longitude,
+                    latitude: Latitude,
+                    maxTemperature: MaxWind,
+                    prefTemperature: preferredWind,
+                    minTemperature: MinWind
+                }
+            };
+            iframe.contentWindow.postMessage(data, '*');
+        }
+    };
     
     const mapChange = () => {
 
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
      };
     iframe.contentWindow.postMessage(data, '*')
-    }
-}
+            iframe.contentWindow.postMessage(data, '*');
+        }
+    };
 });
-

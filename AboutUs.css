@@ -8,8 +8,9 @@
     font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 .aboutus{
-    background: linear-gradient(180deg, #454444 0%, #000000 100%);
-}
+    background: rgb(18, 24, 36);
+    /*background: linear-gradient(180deg, #454444 0%, #000000 100%);
+*/}
 
 footer {
     text-align: center;
@@ -50,8 +51,8 @@ a:focus {
 html,body{
     height:100%;
     margin:0;
-    background:linear-gradient(0deg,#eef2fb 0%,#000 60%);
-    color:#514848;
+    /*background:linear-gradient(0deg,#eef2fb 0%,#000 60%);
+    */color:#514848;
 }
 
 header {
@@ -142,14 +143,17 @@ nav a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
+    text-align: center;
     padding: 0.5em 1em;
     margin: 0 0.3em;
     border-radius: 1.5em;
     background: #222;
     border: 2px solid #183971;
     box-shadow: 0 2px 8px rgba(38, 117, 252, 0.08);
-    font-size: 1.8vw;
+    font-size: 1.4vw;
     display: inline-block;
+    max-width: 10vw;
+    max-height: 3vh;
 }
 
 nav a:hover, nav a:focus {
