@@ -10,38 +10,39 @@
 
 RedAstra leverages **AI and geospatial analysis** to determine optimal sites for **renewable energy installations**. By analyzing **weather**, **geography**, and **land costs**, our goal is to maximize **energy output** while minimizing **project costs** and **environmental impact**.  
 
+The **AI model** is implemented in **JavaScript**, using data from the **NASA POWER API** to classify, cluster, and predict energy potential across different locations.
+
 ---
 
 ## 🎯 Objectives
 
-- Predict renewable energy potential using **weather and climate data**  
-- Incorporate **land costs** and **grid proximity** for smarter project planning  
+- Predict renewable energy potential using **NASA POWER API weather data**  
+- **Classify** locations into high, medium, or low energy potential  
+- **Cluster** similar regions for efficient renewable energy placement  
+- **Predict** expected energy output using regression models  
 - Rank locations by **energy efficiency** and **cost-effectiveness**  
 - Visualize optimal locations on **interactive maps**  
 
 ---
 
-## 📊 Data Sources
+## 📊 Data Source
 
-- **GHCN-Daily** – Global historical weather data ([NOAA](https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily))  
-- **Integrated Surface Database (ISD)** – Hourly weather observations ([NOAA](https://www.ncei.noaa.gov/products/land-based-station/integrated-surface-database))  
-- **AWS Open Data** – Cloud-hosted datasets ([GHCN](https://registry.opendata.aws/noaa-ghcn/), [ISD](https://registry.opendata.aws/noaa-isd/))  
+- **NASA POWER API** – Provides global meteorological and solar/wind data for energy modeling  
+  - 🌐 [NASA POWER API](https://power.larc.nasa.gov/)  
 
 ---
 
-## ⚙️ AI & ML Techniques
+## ⚙️ AI Techniques (JavaScript)
 
-- **Regression Models** – Predict energy output  
-- **Clustering** – Identify high-potential zones  
-- **Neural Networks** – Model complex weather–output relationships  
-- **Time Series Forecasting** – Predict seasonal energy availability  
-- **Geospatial AI** – Combine spatial data with ML predictions  
+- **Classification** – Categorize locations by energy potential  
+- **Clustering** – Group regions with similar characteristics  
+- **Regression** – Predict energy output for specific sites  
 
 ---
 
 ## 🗺️ Key Data Inputs
 
-- Weather & solar/wind measurements  
+- Weather & solar/wind measurements from NASA POWER  
 - Geographic coordinates & elevation  
 - Land cost and grid infrastructure data  
 - Environmental and zoning restrictions  
@@ -50,10 +51,11 @@ RedAstra leverages **AI and geospatial analysis** to determine optimal sites for
 
 ## 🛠️ Tools & Libraries
 
-**Python:** `pandas`, `scikit-learn`, `xgboost`, `geopandas`, `shapely`, `matplotlib`  
-**Deep Learning:** `TensorFlow`, `PyTorch`  
-**Geospatial:** `QGIS`, `Google Earth Engine`, `Folium`  
-**APIs:** Visual Crossing (weather), OpenStreetMap (land/grid data)  
+**JavaScript:** Core AI implementation  
+
+**Optional/Support Tools:**  
+- Visualization: `Leaflet.js`, `D3.js`, `Chart.js`  
+- Geospatial & preprocessing: `QGIS`, `Google Earth Engine`
 
 ---
 
@@ -61,7 +63,7 @@ RedAstra leverages **AI and geospatial analysis** to determine optimal sites for
 
 1. Select a focus region  
 2. Collect & preprocess datasets  
-3. Train predictive models  
+3. Train AI models (classification, clustering, regression) in JavaScript  
 4. Incorporate cost optimization  
 5. Rank and visualize optimal locations  
 
