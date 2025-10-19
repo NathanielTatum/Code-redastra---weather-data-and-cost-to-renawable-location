@@ -19,7 +19,7 @@
             margin: 0;
             padding: 0;
             display: grid; /* Use CSS Grid for the body */
-            grid-template-columns: 1fr 300px ; /* 300px for sidebar, rest for Cesium */
+            grid-template-columns: 1fr ; /* 300px for sidebar, rest for Cesium */
             height: 1/2vh 50vh ;
     }
     #header{
@@ -27,8 +27,16 @@
         grid-row:1;
     }
     #sideBar{
-        grid-column: 2;
-        grid-row: 2;
+        
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border: 1px solid #888;
+      border-radius: 5px;
+      font-size: 14px;
+      z-index: 100;
     }
     #cesiumContainer {
       width: 100%;
@@ -238,11 +246,8 @@ document.getElementById('zoomOut').addEventListener('click', () => {
   
   
   </script>
-  </div>
-</body>
-<script src="visualization.js"></script>
-<div id = "sideBar">
-        <aside style="flex:1;background:#fff;padding:1rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+  <div id = "sideBar">
+        <aside >
             <h2>Region Statistics</h2><!--
             <ul>
                 
@@ -262,27 +267,41 @@ document.getElementById('zoomOut').addEventListener('click', () => {
                         <option value="Solar panels">Solar panels</option>
                         <option value="Wind turbine">Wind turbine</option>
                     </select>
-                </form>
-                <br>
+                </form><br>
                 <div id = "wind">
                     <label>max wind speed<input type="number" name="maxWind"></label><br>
                     <label>preferred wind speed<input type="number" name="preferredWind"></label><br>
                     <label>min wind speed<input type="number" name="minWind"></label>
+                    <form action="/submit-form.php" method="post">
+                    <label for="display">Display data:</label>
+                        <select id="display" name="selectedOption" onchange="updateInputValue()">
+                            <option value="50mMaxWind">Max wind speed at 50m</option>
+                            <option value="50mAvgWind">Average wind speed at 50m</option>
+                            <option value="50mMinWind">Min wind speed at 50m</option>
+                        </select>
+                    </form><br>
                 </div>
                 <div id = "solar">
                 <label>max temp<input type="number" name="maxSolar"></label><br>
                 <label>preferred temp<input type="number" name="preferredSun"></label><br>
                 <label>min temp<input type="number" name="minSolar"></label>
+                    <form action="/submit-form.php" method="post">
+                    <label for="display">Display data:</label>
+                        <select id="display" name="selectedOption" onchange="updateInputValue()">
+                            <option value="MaxTemp">Max temperature</option>
+                            <option value="AvgTemp">Average temperature</option>
+                            <option value="MinTemp">Min temperature</option>
+                            <option value="AvgLight">Average light in KWH</option>
+                        </select>
+                    </form><br>
                 </div>
-
             </div>
+  </div>
+</body>
+<script src="visualization.js"></script>
+
         </aside>
     </main>
-    <script>
-        // If the Google Maps 3D component is available we leave it to render itself.
-        // The <gmp-map-3d> element is loaded via the MapsJS beta library included in the head.
-        // Chart placeholder (left commented) — your existing chart code in visualization.js will hook into the canvas.
-    </script>
 </div>
     <footer style = "text-align: right">
         Cache me outside: Project Aneious

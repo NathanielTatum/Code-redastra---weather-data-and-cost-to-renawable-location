@@ -11,7 +11,7 @@
         <div style="font-size:1.5rem;font-weight:bold;">Aneious</div>
         <nav>
             <a href="index.html">Home</a>
-            <a href="chat.html">chat</a>
+            <a href="chat.html">Chat</a>
             <a href="visualization.html">Visualization</a>
             <a href="methodology.html">Methodology</a>
             <a href="aboutus.html">About Us</a>
@@ -24,14 +24,14 @@
     <main style="max-width:900px;margin:2rem auto;background:#fff;padding:2rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
         <h2>Step-by-Step Process</h2>
         <ol>
-            <li><strong>Data Collection:</strong> We use Nasa collected weather data, then isolate it to a specific area. We then compare it to publically availible records on land availibility. Giving us a substantial ammount of raw data.</li>
-            <li><strong>Preprocessing:</strong> We then combine this raw data with user inputs.</li>
-            <li><strong>AI Model:</strong> Then we pass this data bomb onto a AI model, which then analysises the data and passes interpretation to the user through the chat feature</li>
-            <li><strong>Location Ranking:</strong> The chat bot will rank the results and then place display it to the user in simplified words, which anyone can understand (Ie no need for a masters in statistics to understand).</li>
-            <li><strong>Visualization:</strong> Finally we then display the results on a interactive map.</li>
+            <li><strong>Data Collection:</strong> Using a specified longitude and latitude value, Aneious collects relevent weather info from Nasa's API on climate data.</li>
+            <li><strong>Preprocessing:</strong> We then combine this raw data with user inputs, to prevent the temperature or wind speed from causing to much variance outside of the cells operational limits.</li>
+            <li><strong>Gemini AI studio Model:</strong>Then we pass this data bomb onto a AI model, which then analysises the data and passes interpretation to the user through the chat feature</li>
+            <li><strong>Cesium ion Interactive map: </strong>This same data is simaltaniously being sent to a cesium ion interactive map. Allowing for the user to both compare the location specified by the AI, and check its accuracy</li>
+            <li><strong>User conclusion:</strong> given this data the user can then enter variables until they find a spot which will work with their projects development </li>
         </ol>
         <h3>System Architecture</h3>
-        <p>We use a chat bot trained through gemini Ai to allow for the chat feature, a _____ library for the interactive map, and nasa statistics for the raw data.</p>
+        <p>We use a chat bot trained through gemini Ai to allow for the chat feature, a Cesium Ion library for the interactive map, and NASA statistics for the raw data.</p>
         <h3>Techniques Used</h3>
         <ul>
             <li>1</li>
