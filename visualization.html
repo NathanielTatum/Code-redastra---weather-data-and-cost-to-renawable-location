@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="visualization.js"></script>
 </head>
 <body>
     <header class = "topSection">
@@ -40,17 +41,31 @@
                 <li>Predicted Energy Output: <span id="energy-output">--</span></li>
                 <li>Estimated ROI: <span id="roi">--</span></li>
             </ul>
+            <label><input type="number" name="Longitude">longitude</label>
+            <label><input type="number" name="Latitude">latitude</label>
+
             <div style="margin-top:1rem;">
-                <label><input type="checkbox" checked> Solar Potential</label><br>
-                <label><input type="checkbox" checked> Wind Speed</label><br>
-                <label><input type="checkbox"> Land Cost</label><br>
-                <label><input type="checkbox"> Terrain/Elevation</label>
+                <form action="/submit-form.php" method="post">
+                <label for="sunOrWind">*Choose an option:</label>
+                    <select id="sunOrWind" name="selectedOption" onchange="updateInputValue()">
+                        <option value="Solar panels">Solar panels</option>
+                        <option value="Wind turbine">Wind turbine</option>
+                    </select>
+                </form>
+                <div id = "wind">
+                    <label><input type="number" name="maxWind">max wind speed</label>
+                    <label><input type="number" name="preferredWind">preferred wind speed</label>
+                    <label><input type="number" name="minWind">min wind speed</label>
+                </div>
+                <div id = "solar">
+                <label><input type="number" name="maxSolar">max temp</label>
+                <label><input type="number" name="preferredSun">preferred temp</label>
+                <label><input type="number" name="minSolar">min temp</label>
+                </div>
+
             </div>
         </aside>
     </main>
-    <footer>
-        &copy; Aneious
-    </footer>
     <script>
         // Placeholder for Leaflet map
         var map = L.map('map').setView([20, 0], 2);
@@ -58,20 +73,20 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
         // Placeholder for Chart.js
-        var ctx = document.getElementById('chart').getContext('2d');
+        /*var ctx = document.getElementById('chart').getContext('2d');
         var chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Location 1', 'Location 2', 'Location 3'],
+                labels: ['Houston', 'Austin', 'Dallas'],
                 datasets: [{
                     label: 'Predicted Energy Output',
                     data: [120, 90, 150],
                     backgroundColor: '#2575fc'
                 }]
             }
-        });
+        });*/
     </script>
-    <footer style = "text-align: right">
+    <footer style = "text-align: right; margin-bottom:0;">
         Cache me outside: Aneious
     </footer>
 </body>
