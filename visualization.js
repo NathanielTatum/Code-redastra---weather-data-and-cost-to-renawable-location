@@ -3,9 +3,6 @@ isWind = false;
 isSolar = false;
 
 
-wind.style.display = "none"
-solar.style.display = "none"
-
 
 // Wait for the document to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -84,9 +81,20 @@ updateVisualization = (() =>{
     MaxSolar = maxSolar.value;
     MinSolar = minSolar.value;
     PreferredSolar = preferredSolar.value;
+    Longitude = longitude.value;
+    Latitude = latitude.value;
+    console.log("MaxWind: " + MaxWind);
+    console.log("MinWind: " + MinWind);
+    console.log("PreferredWind: " + PreferredWind);
+    console.log("MaxSolar: " + MaxSolar);
+    console.log("MinSolar: " + MinSolar);
+    console.log("PreferredSolar: " + PreferredSolar);
+    console.log("Longitude: " + Longitude);
+    console.log("Latitude: " + Latitude);
 })
 
 updateInputValue = (() =>{
+    console.log("updated");
     const selectedOption = sunOrWind.value;
     if (selectedOption == "Solar panels") {
         solar.style.display = "block";
