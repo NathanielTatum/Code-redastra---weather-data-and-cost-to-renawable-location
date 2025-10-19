@@ -1,0 +1,5 @@
+{
+  "name": "Renewable Energy Site Selector Chatbot",
+  "description": "An AI-powered chatbot that uses climate data to help corporations find optimal global locations for solar and wind energy projects, considering factors like land cost and grid infrastructure.",
+  "requestFramePermissions": []
+}
