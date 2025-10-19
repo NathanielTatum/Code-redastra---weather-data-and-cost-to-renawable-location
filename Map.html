@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Cesium CSS (unpkg CDN) -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cesium Map — Aneious</title>
+
+  <!-- Cesium CSS (unpkg CDN) -->
   <link href="https://unpkg.com/cesium@1.113.0/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 
   <style>
@@ -13,22 +15,6 @@
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-    }
-    
-    body {
-            margin: 0;
-            padding: 0;
-            display: grid; /* Use CSS Grid for the body */
-            grid-template-columns: 1fr 300px ; /* 300px for sidebar, rest for Cesium */
-            height: 1/2vh 50vh ;
-    }
-    #header{
-        grid-column: 1 / -1; /* Span across all columns */
-        grid-row:1;
-    }
-    #sideBar{
-        grid-column: 2;
-        grid-row: 2;
     }
     #cesiumContainer {
       width: 100%;
@@ -41,92 +27,23 @@
       background: #222;
       color: #fff;
       display:flex;
-      align-items:right;
+      align-items:center;
       gap:16px;
     }
-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5em 1em;
-    margin: 0 0.3em;
-    border-radius: 1.5em;
-    background: #222;
-    border: 2px solid #183971;
-    box-shadow: 0 2px 8px rgba(38, 117, 252, 0.08);
-    font-size: 1.8vw;
-    display: inline-block;
-}
-
-nav a:hover, nav a:focus {
-    background: #2575fc;
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(38, 117, 252, 0.18);
-    text-decoration: none;
-}
-
-nav a:active {
-    background: #222;
-    color: #fff;
-}
-
-@media (max-width: 700px) {
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-        justify-content: center;
-    }
-    nav a {
-        font-size: 0.95em;
-        padding: 0.4em 0.8em;
-        margin: 0.2em;
-    }
-}
-nav a:hover {
-    text-decoration: underline;
-}
-/* Styling unvisited links */
-a:link {
-  color: #9dbbe2; /* light blue */
-}
-
-/* Styling visited links */
-a:visited {
-  color: #ac57e9; /* hot light pink */
-}
-
-/* Styling links on hover */
-a:hover {
-  color: #c089de; /* light pink */
-}
-
-/* Styling active links */
-a:active {
-  color: #8b96cd; /* light blue grey */
-}
-
-/* Styling focused links (e.g., for keyboard navigation) */
-a:focus {
-  color: #8b96cd /* light blue */
-}
-
   </style>
 </head>
 <body>
-  <header id = "header">
-        <div style="font-size:1.5rem;font-weight:bold;">Aneious</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="chat.html">chat</a>
-            <a href="visualization.html">Visualization</a>
-            <a href="methodology.html">Methodology</a>
-            <a href="aboutus.html">About Us</a>
-        </nav>
+  <header>
+    <div style="font-size:1.25rem;font-weight:600">Aneious</div>
+    <nav style="margin-left:auto">
+      <a href="index.html" style="color:#fff;margin-right:12px">Home</a>
+      <a href="visualization.html" style="color:#fff;margin-right:12px">Visualization</a>
+      <a href="aboutus.html" style="color:#fff">About</a>
+    </nav>
   </header>
 
   <!-- Cesium container -->
-  <div id="cesiumContainer">
+  <div id="cesiumContainer"></div>
 
   <!-- CesiumJS (unpkg CDN) -->
   <script src="https://unpkg.com/cesium@1.113.0/Build/Cesium/Cesium.js"></script>
@@ -238,54 +155,8 @@ document.getElementById('zoomOut').addEventListener('click', () => {
 });
   
   
-  </script>
-  </div>
-</body>
-<div id = "sideBar">
-        <aside style="flex:1;background:#fff;padding:1rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            <h2>Region Statistics</h2><!--
-            <ul>
-                
-                <li>Avg Wind Speed: <span id="wind-speed">--</span></li>
-                <li>Avg Solar Irradiance: <span id="solar-irradiance">--</span></li>
-                <li>Avg Land Cost: <span id="land-cost">--</span></li>
-                <li>Predicted Energy Output: <span id="energy-output">--</span></li>
-                <li>Estimated ROI: <span id="roi">--</span></li>
-            </ul>-->
-            <label>longitude<input type="number" name="Longitude"></label><br>
-            <label>latitude<input type="number" name="Latitude"></label><br>
-
-            <div style="margin-top:1rem;">
-                <form action="/submit-form.php" method="post">
-                <label for="sunOrWind">*Choose an option:</label>
-                    <select id="sunOrWind" name="selectedOption" onchange="updateInputValue()">
-                        <option value="Solar panels">Solar panels</option>
-                        <option value="Wind turbine">Wind turbine</option>
-                    </select>
-                </form>
-                <br>
-                <div id = "wind">
-                    <label>max wind speed<input type="number" name="maxWind"></label><br>
-                    <label>preferred wind speed<input type="number" name="preferredWind"></label><br>
-                    <label>min wind speed<input type="number" name="minWind"></label>
-                </div>
-                <div id = "solar">
-                <label>max temp<input type="number" name="maxSolar"></label><br>
-                <label>preferred temp<input type="number" name="preferredSun"></label><br>
-                <label>min temp<input type="number" name="minSolar"></label>
-                </div>
-
-            </div>
-        </aside>
-    </main>
-    <script>
-        // If the Google Maps 3D component is available we leave it to render itself.
-        // The <gmp-map-3d> element is loaded via the MapsJS beta library included in the head.
-        // Chart placeholder (left commented) — your existing chart code in visualization.js will hook into the canvas.
-    </script>
-</div>
-    <footer style = "text-align: right">
-        Cache me outside: Project Aneious
-    </footer>
+  </script><button 
+  id="zoomIn">+</button>
+<button id="zoomOut">-</button>
 </body>
 </html>

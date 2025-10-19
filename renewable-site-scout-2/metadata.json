@@ -1,8 +1,0 @@
-{
-  "name": "Renewable Site Scout-2",
-  "description": "An AI-powered chatbot that helps corporations and firms find optimal locations for renewable energy sources by combining Google Gemini for reasoning and the NASA POWER API for climate data.",
-  "requestFramePermissions": [
-    "geolocation"
-  ],
-  "prompt": "Is latitude 32.78, longitude -96.80 a good location for a 50 MW solar farm?"
-}
