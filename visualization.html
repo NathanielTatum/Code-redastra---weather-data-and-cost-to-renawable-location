@@ -42,8 +42,8 @@
                 <li>Predicted Energy Output: <span id="energy-output">--</span></li>
                 <li>Estimated ROI: <span id="roi">--</span></li>
             </ul>-->
-            <label><input type="number" name="Longitude">longitude</label>
-            <label><input type="number" name="Latitude">latitude</label>
+            <label>longitude<input type="number" name="Longitude"></label><br>
+            <label>latitude<input type="number" name="Latitude"></label><br>
 
             <div style="margin-top:1rem;">
                 <form action="/submit-form.php" method="post">
@@ -53,14 +53,15 @@
                         <option value="Wind turbine">Wind turbine</option>
                     </select>
                 </form>
+                <br>
                 <div id = "wind">
-                    <label>max wind speed<input type="number" name="maxWind"></label>
-                    <label>preferred wind speed<input type="number" name="preferredWind"></label>
+                    <label>max wind speed<input type="number" name="maxWind"></label><br>
+                    <label>preferred wind speed<input type="number" name="preferredWind"></label><br>
                     <label>min wind speed<input type="number" name="minWind"></label>
                 </div>
                 <div id = "solar">
-                <label>max temp<input type="number" name="maxSolar"></label>
-                <label>preferred temp<input type="number" name="preferredSun"></label>
+                <label>max temp<input type="number" name="maxSolar"></label><br>
+                <label>preferred temp<input type="number" name="preferredSun"></label><br>
                 <label>min temp<input type="number" name="minSolar"></label>
                 </div>
 
