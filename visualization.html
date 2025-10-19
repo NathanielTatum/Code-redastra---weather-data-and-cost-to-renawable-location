@@ -27,7 +27,6 @@
       font-family: 'inter', sans-serif;
       background: #000000;
       position: sticky; 
-      max-height:5%;
       top: 0;
       font-family: 'inter', sans-serif;
       grid-column: 1 / -1; /* Span across all columns */
@@ -89,19 +88,6 @@ nav a:active {
     color: #fff;
 }
 
-@media (max-width: 700px) {
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-        justify-content: center;
-    }
-    nav a {
-        font-size: 0.95em;
-        padding: 0.4em 0.8em;
-        margin: 0.2em;
-    }
-}
 nav a:hover {
     text-decoration: underline;
 }
@@ -134,7 +120,7 @@ a:focus {
 </head>
 <body>
   <header id = "header">
-        <div style="font-size:1.5rem;font-weight:bold;">Aneious</div>
+        <div style="font-size:2rem;font-weight:bold;">Aneious</div>
         <nav>
             <a href="index.html">Home</a>
             <a href="chat.html">chat</a>

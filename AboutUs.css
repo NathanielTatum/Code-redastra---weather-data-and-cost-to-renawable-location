@@ -56,6 +56,7 @@ html,body{
 }
 
 header {
+    font-family: 'inter', sans-serif;
     background: #222;
     color: #fff;
     padding: 1rem 2rem;
@@ -152,6 +153,7 @@ nav a {
     box-shadow: 0 2px 8px rgba(38, 117, 252, 0.08);
     font-size: 1.4vw;
     display: inline-block;
+    font-family: 'inter', sans-serif;
     max-width: 10vw;
     max-height: 3vh;
 }
@@ -166,20 +168,6 @@ nav a:hover, nav a:focus {
 nav a:active {
     background: #222;
     color: #fff;
-}
-
-@media (max-width: 700px) {
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-        justify-content: center;
-    }
-    nav a {
-        font-size: 0.95em;
-        padding: 0.4em 0.8em;
-        margin: 0.2em;
-    }
 }
         /* Full-width card that spans both columns */
         .card.full {
