@@ -53,10 +53,9 @@ nav a {
     margin: 0 0.3em;
     border-radius: 1.5em;
     background: #222;
-    border: 2px solid #2575fc;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    border: 2px solid #183971;
     box-shadow: 0 2px 8px rgba(38, 117, 252, 0.08);
-    font-size: 1em;
+    font-size: 1.8vw;
     display: inline-block;
 }
 
