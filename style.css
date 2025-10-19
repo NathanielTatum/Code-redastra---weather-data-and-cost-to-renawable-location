@@ -229,9 +229,6 @@ a:link {
 }
 
 /* Styling visited links */
-a:visited {
-  color: #c089e8; /* hot light pink */
-}
 
 /* Styling links on hover */
 a:hover {

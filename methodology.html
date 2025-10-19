@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class = "topSection">
+    <header class="topSection">
         <div style="font-size:2rem;font-weight:bold;">Aneious</div>
         <nav>
             <a href="index.html">Home</a>
@@ -17,31 +17,36 @@
             <a href="aboutus.html">About Us</a>
         </nav>
     </header>
+
     <section class="hero">
         <h1>How It Works</h1>
         <p>Discover the AI and data pipeline powering optimal renewable energy placement.</p>
     </section>
+
     <main style="max-width:900px;margin:2rem auto;background:#fff;padding:2rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
         <h2>Step-by-Step Process</h2>
         <ol>
-            <li><strong>Data Collection:</strong> Using a specified longitude and latitude value, Aneious collects relevent weather info from Nasa's API on climate data.</li>
-            <li><strong>Preprocessing:</strong> We then combine this raw data with user inputs, to prevent the temperature or wind speed from causing to much variance outside of the cells operational limits.</li>
-            <li><strong>Gemini AI studio Model:</strong>Then we pass this data bomb onto a AI model, which then analysises the data and passes interpretation to the user through the chat feature</li>
-            <li><strong>Cesium ion Interactive map: </strong>This same data is simaltaniously being sent to a cesium ion interactive map. Allowing for the user to both compare the location specified by the AI, and check its accuracy</li>
-            <li><strong>User conclusion:</strong> given this data the user can then enter variables until they find a spot which will work with their projects development </li>
+            <li><strong>Data Collection:</strong> Using a specified longitude and latitude value, Aneious collects relevant weather info from NASA's climate data API.</li>
+            <li><strong>Preprocessing:</strong> We then combine this raw data with user inputs to prevent temperature or wind speed from causing too much variance outside of the cell’s operational limits.</li>
+            <li><strong>Gemini AI Studio Model:</strong> The processed data is then passed to our AI model, which analyzes patterns, interprets energy potential, and communicates results through the chat interface.</li>
+            <li><strong>Cesium Ion Interactive Map:</strong> This same data is simultaneously sent to a Cesium Ion interactive map, allowing the user to visually compare AI-selected sites and verify accuracy.</li>
+            <li><strong>User Conclusion:</strong> Given this data, the user can experiment with variables until they find the most efficient and cost-effective location for renewable development.</li>
         </ol>
+
         <h3>System Architecture</h3>
-        <p>We use a chat bot trained through gemini Ai to allow for the chat feature, a Cesium Ion library for the interactive map, and NASA statistics for the raw data.</p>
+        <p>We use a chatbot powered by Gemini AI for natural language interaction, a Cesium Ion library for 3D visualization, and NASA’s open data resources for accurate environmental inputs.</p>
+
         <h3>Techniques Used</h3>
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
+            <li><strong>Data Collection and Preprocessing:</strong> The AI gathers weather and environmental data from NASA’s API, cleans and normalizes it, and combines it with user inputs to ensure consistency and reliability.</li>
+            <li><strong>Machine Learning and Predictive Modeling:</strong> Gemini AI applies trained regression and neural network models to identify optimal renewable energy placement by correlating environmental variables such as solar radiation, wind speed, and cost efficiency.</li>
+            <li><strong>Natural Language Processing (NLP):</strong> The chatbot interprets user queries using tokenization, intent recognition, and contextual analysis, allowing natural interaction and personalized recommendations.</li>
+            <li><strong>Optimization and Decision Logic:</strong> The system performs multi-variable optimization to recommend the best renewable energy sites, balancing cost, output potential, and environmental impact through weighted scoring and decision algorithms.</li>
+            <li><strong>Continuous Learning and Adaptation:</strong> Aneious continuously refines its models through feedback and new data inputs, improving accuracy and adaptability to changing environmental and cost conditions.</li>
         </ul>
     </main>
-    <footer style = "text-align: right">
+
+    <footer style="text-align: right">
         Cache me outside: Project Aneious
     </footer>
 </body>
