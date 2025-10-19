@@ -33,16 +33,17 @@
             </div>
         </div>
         <aside style="flex:1;background:#fff;padding:1rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            <h2>Region Statistics</h2>
+            <h2>Region Statistics</h2><!--
             <ul>
+                
                 <li>Avg Wind Speed: <span id="wind-speed">--</span></li>
                 <li>Avg Solar Irradiance: <span id="solar-irradiance">--</span></li>
                 <li>Avg Land Cost: <span id="land-cost">--</span></li>
                 <li>Predicted Energy Output: <span id="energy-output">--</span></li>
                 <li>Estimated ROI: <span id="roi">--</span></li>
-            </ul>
-            <label><input type="number" name="Longitude">Longitude</label>
-            <label><input type="number" name="Latitude">Latitude</label>
+            </ul>-->
+            <label><input type="number" name="Longitude">longitude</label>
+            <label><input type="number" name="Latitude">latitude</label>
 
             <div style="margin-top:1rem;">
                 <form action="/submit-form.php" method="post">
@@ -53,14 +54,14 @@
                     </select>
                 </form>
                 <div id = "wind">
-                    <label><input type="number" name="maxWind">Max Wind Speed</label>
-                    <label><input type="number" name="preferredWind">Preferred Wind Speed</label>
-                    <label><input type="number" name="minWind">Min Wind Speed</label>
+                    <label>max wind speed<input type="number" name="maxWind"></label>
+                    <label>preferred wind speed<input type="number" name="preferredWind"></label>
+                    <label>min wind speed<input type="number" name="minWind"></label>
                 </div>
                 <div id = "solar">
-                <label><input type="number" name="maxSolar">Max Temperature</label>
-                <label><input type="number" name="preferredSun">Preferred Temperature</label>
-                <label><input type="number" name="minSolar">Min Temperature</label>
+                <label>max temp<input type="number" name="maxSolar"></label>
+                <label>preferred temp<input type="number" name="preferredSun"></label>
+                <label>min temp<input type="number" name="minSolar"></label>
                 </div>
 
             </div>
@@ -86,8 +87,8 @@
             }
         });*/
     </script>
-    <footer style = "text-align: right; margin-bottom:0;">
-        Cache me outside: Aneious
+    <footer style = "text-align: right">
+        Cache me outside: Project Aneious
     </footer>
 </body>
 </html>
