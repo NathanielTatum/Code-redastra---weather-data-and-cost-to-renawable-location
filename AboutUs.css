@@ -68,10 +68,16 @@ header {
     margin:32px auto;
     padding:24px;
 }
-
+#page-title{
+    text-align: center;
+    font-size: 2rem
+}
         /* Title / hero */
         .hero {
-            background: linear-gradient(90deg, #d84f29 45%, #985858 100%);border-radius: var(--radius);
+            /*background: linear-gradient(90deg, #d84f29 45%, #950a0a 100%);border-radius: var(--radius);
+            */
+            background-color: #fff;
+            border-radius: 12px;
             color: #514848;
             padding: 36px;
             display: flex;
@@ -114,6 +120,7 @@ header {
             border-radius:12px;
             box-shadow: 0 6px 18px rgba(11,18,32,0.04);
             border:1px solid rgba(11,18,32,0.04);
+            align-items:center
         }
         .card h2{
             margin:0 0 8px 0;
