@@ -6,7 +6,7 @@ body {
 }
 
 header {
-      font-family: 'inter', sans-serif;
+    font-family: 'inter', sans-serif;
     background: #222;
     color: #fff;
     padding: 1rem 2rem;
@@ -101,6 +101,13 @@ nav a:hover {
 .hero {
       font-family: 'inter', sans-serif;
     padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(0deg, #333333 0%, #000000 100%);
+    color: #fff;
+}
+#chatBotBox{
+    font-family: 'inter', sans-serif;
+    padding: 1rem 2rem;
     text-align: center;
     background: linear-gradient(0deg, #333333 0%, #000000 100%);
     color: #fff;
