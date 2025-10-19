@@ -36,13 +36,12 @@
       display: block;
     }
     header {
-      height: 64px;
-      padding: 12px 18px;
-      background: #222;
-      color: #fff;
-      display:flex;
-      align-items:right;
-      gap:16px;
+    background: #222;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     }
 nav a {
     color: #fff;
@@ -241,6 +240,7 @@ document.getElementById('zoomOut').addEventListener('click', () => {
   </script>
   </div>
 </body>
+<script src="visualization.js"></script>
 <div id = "sideBar">
         <aside style="flex:1;background:#fff;padding:1rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
             <h2>Region Statistics</h2><!--
@@ -252,8 +252,8 @@ document.getElementById('zoomOut').addEventListener('click', () => {
                 <li>Predicted Energy Output: <span id="energy-output">--</span></li>
                 <li>Estimated ROI: <span id="roi">--</span></li>
             </ul>-->
-            <label>longitude<input type="number" name="Longitude"></label><br>
-            <label>latitude<input type="number" name="Latitude"></label><br>
+            <label>*Longitude: <input type="number" name="Longitude"></label><br>
+            <label>*Latitude: <input type="number" name="Latitude"></label><br>
 
             <div style="margin-top:1rem;">
                 <form action="/submit-form.php" method="post">

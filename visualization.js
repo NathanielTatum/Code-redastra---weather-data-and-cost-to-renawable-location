@@ -27,6 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const preferredSolar = getEl('preferredSolar');
     const longitude = getEl('Longitude');
     const latitude = getEl('Latitude');
+    
+    const MaxWind = maxWind ? maxWind.value : 1000000;
+    const MinWind = minWind ? minWind.value : 0;
+    const PreferredWind = preferredWind ? preferredWind.value : null;
+    const MaxSolar = maxSolar ? maxSolar.value : 100000;
+    const MinSolar = minSolar ? minSolar.value : 0;
+    const PreferredSolar = preferredSolar ? preferredSolar.value : null;
+    const Longitude = longitude ? longitude.value : null;
+    const Latitude = latitude ? latitude.value : null;
 
     // Update visualization using current input values (guarding missing elements)
     const updateVisualization = () => {
@@ -86,4 +95,38 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial run
     updateInputValue();
     updateVisualization();
+
+    const sendData = () => {
+
+        const iframe = document.getElementById('botFrame');
+
+        // Data you want to send
+        if(isSolar){
+        const data = {
+            type: 'temps',
+            payload: {
+                longitude: Longitude,
+                latitude: Latitude,
+                maxTemperature: MaxSolar,
+                prefTemperature: PreferredSolar,
+                minTemperature: MinSolar
+            }
+     };
+    iframe.contentWindow.postMessage(data, '*')
+    }else{
+        
+        const data = {
+            type: 'winds',
+            payload: {
+                longitude: Longitude,
+                latitude: Latitude,
+                maxTemperature: MaxWind,
+                prefTemperature: preferredWind,
+                minTemperature: MinWind
+            }
+     };
+    iframe.contentWindow.postMessage(data, '*')
+    }
+}
 });
+
